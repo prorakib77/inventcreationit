@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string('plan_name');
+            $table->text('plan_description')->nullable();
+            $table->float('plan_price');
             $table->timestamps();
         });
     }
