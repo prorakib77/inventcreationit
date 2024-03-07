@@ -28,11 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-
-    // plan operation 
+    // plan operation
     Route::resource('plan', PlanController::class);
-    // plan operation 
+    // plan operation
 });
 
 require __DIR__.'/auth.php';
