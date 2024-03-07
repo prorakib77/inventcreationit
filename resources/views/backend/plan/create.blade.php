@@ -7,17 +7,12 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <form action="{{ route('plan.create') }}" method="POST">
+            <form action="{{ route('plan.store') }}" method="POST">
             @csrf
-
-
-            <input type="text" placeholder="Plan Name" name="plan_name" class="w-full max-w-xs input input-bordered input-accent" />
-            <input type="number" placeholder="Plan Price" name="plan_Price" class="w-full max-w-xs input input-bordered input-accent" />
-            <input type="text" placeholder="Plan Name" name="plan_Price" class="w-full max-w-xs input input-bordered input-accent" />
-
-
-            <button type="submit">Add</button>
-            
+                <input type="text" placeholder="Plan Name" name="plan_name" class="w-full max-w-xs input input-bordered input-accent" />
+                <input type="number" placeholder="Plan Price" name="plan_Price" class="w-full max-w-xs input input-bordered input-accent" />
+                <input type="text" placeholder="Plan Name" name="plan_Price" class="w-full max-w-xs input input-bordered input-accent" />
+                <button type="submit">Add</button>
             </form>
         </div>
     </div>
