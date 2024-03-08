@@ -35,12 +35,12 @@
                                                 Plan Items
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Edit</span>
+                                                <span class="sr-only">Actions</span>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($plans as $plan)
+                                        @forelse ($plans as $plan)
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">
@@ -59,17 +59,36 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    @foreach ($plan->planItems as $item)
+                                                    @forelse ($plan->planItems as $item)
                                                         <div class="text-sm text-gray-900">{{ $item->plan_item_name }}
                                                         </div>
-                                                    @endforeach
+                                                    @empty
+                                                        <div class="text-sm text-gray-500">No plan items</div>
+                                                    @endforelse
+
+                                                    
                                                 </td>
-                                                <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                <td
+                                                    class="px-6 py-4 text-sm font-medium text-right flex space-x-2 justify-end">
                                                     <a href="{{ route('plan.edit', $plan->id) }}"
                                                         class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                    <form action="{{ route('plan.destroy', $plan->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="text-red-600 hover:text-red-900">Delete</button>
+                                                    </form>
+
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center" colspan="5">
+                                                    No plans found.
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

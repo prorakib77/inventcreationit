@@ -13,8 +13,11 @@
 
                 <div class="flex flex-col space-y-2">
 
+
                     <input type="text" placeholder="Plan Name" name="plan_name"
-                        class="w-full input input-bordered input-accent" value="{{ old('plan_name', $plan->plan_name) }}" />
+                        class="w-full input input-bordered input-accent"
+                        value="{{ old('plan_name', $plan->plan_name) }}" />
+
                     @error('plan_name')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
@@ -25,30 +28,29 @@
                     @enderror
 
                     <input type="number" placeholder="Plan Price" name="plan_price"
-                        class="w-full input input-bordered input-accent" value="{{ old('plan_price', $plan->plan_price) }}" />
+                        class="w-full input input-bordered input-accent"
+                        value="{{ old('plan_price', $plan->plan_price) }}" />
                     @error('plan_price')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
 
-                <div x-data="{ items: @json(old('plan_items', $plan->planItems->pluck('id'))) }" class="space-y-2">
 
-                        <template x-for="(item, index) in items" :key="index">
-                            <input type="text" x-model="items[index]" name="plan_items[]" :placeholder="'Plan Item '"
+                <div x-data="{ items: @js(old('plan_items', $plan->planItems->pluck('plan_item_name'))) }" class="space-y-2">
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="flex">
+                            <input type="text" x-model="item" name="plan_items[]" :placeholder="'Plan Item '"
                                 class="w-full input input-bordered input-accent" :value="item">
-                        </template>
-
-                        <button type="button" x-on:click="items.push('')" class="btn btn-primary">Add Plan Item</button>
-
-                    </div>
-
-                    @error('plan_items')
-                        <span class="text-red-500">{{ $message }}</span>
-                    @enderror
+                            <button type="button" x-on:click="items.splice(index, 1)"
+                                    class="btn btn-error ml-2">Remove</button>
+                        </div>
+                    </template>
+                    <button type="button" x-on:click="items.push('')" class="btn btn-primary">Add Plan Item</button>
                 </div>
+                @error('plan_items')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
 
-
-                <button class="btn btn-accent mt-2 w-full" type="submit">Add Plan</button>
-
+                <button class="btn btn-accent mt-2 w-full" type="submit">Update Plan</button>
             </form>
         </div>
     </div>
