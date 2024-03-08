@@ -30,20 +30,24 @@
                     @enderror
 
                     <div x-data="{ items: [''] }" class="space-y-2">
-                        {{-- <input type="text" x-model="items[0]" name="plan_item[]" placeholder="Plan Item"
-                            class="w-full input input-bordered input-accent"> --}}
 
                         <template x-for="(item, index) in items.slice(1)" :key="index">
-                            <input type="text" x-model="items[index]" name="plan_items[]" :placeholder="'Plan Item '"
-                                class="w-full input input-bordered input-accent">
+                            <div class="flex">
+                                <input type="text" x-model="items[index]" name="plan_items[]"
+                                    :placeholder="'Plan Item '" class="w-full input input-bordered input-accent">
+                                <button type="button" x-on:click="items.splice(index, 1)"
+                                    class="btn btn-error ml-2">Remove</button>
+                            </div>
                         </template>
 
-                        <button type="button" x-on:click="items.push('')" class="btn btn-primary">Add Plan Item</button>
+                        <button type="button" x-on:click="items.push('')" class="btn btn-primary">Add Plan
+                            Item</button>
 
                     </div>
                     @error('plan_items')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
+
                 </div>
 
 
