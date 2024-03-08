@@ -38,7 +38,7 @@
                 <div x-data="{ items: @js(old('plan_items', $plan->planItems->pluck('plan_item_name'))) }" class="space-y-2">
                     <template x-for="(item, index) in items" :key="index">
                         <div class="flex">
-                            <input type="text" x-model="item" name="plan_items[]" :placeholder="'Plan Item '"
+                            <input type="text" x-model="items[index]" name="plan_items[]" :placeholder="'Plan Item '"
                                 class="w-full input input-bordered input-accent" :value="item">
                             <button type="button" x-on:click="items.splice(index, 1)"
                                     class="btn btn-error ml-2">Remove</button>
