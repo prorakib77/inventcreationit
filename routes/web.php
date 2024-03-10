@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function () {
     // plan operation
     Route::resource('plan', PlanController::class);
     // plan operation
+    // service operation
+    Route::resource('service', ServiceController::class);
+    // service operation
 });
 
 require __DIR__.'/auth.php';
