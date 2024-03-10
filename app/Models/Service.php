@@ -10,12 +10,13 @@ class Service extends Model
 {
     use HasFactory;
     protected $fillable = [
-       'service_name',
-       'service_slug',
-       'service_description',
-       'service_image',
+        'service_name',
+        'service_slug',
+        'service_description',
+        'service_image',
     ];
 
+    public const IMAGE_PATH = 'storage/services/';
 
     public function ServicePackItems(): HasMany
     {

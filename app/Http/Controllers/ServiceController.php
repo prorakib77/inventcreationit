@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreServiceRequest;
 use App\Models\Service;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\ServicePackItem;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
+use Illuminate\Http\RedirectResponse;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ServiceController extends Controller
 {
@@ -34,41 +36,40 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
-        $request->validate([
-            'service_name' => 'required|max:255',
-            // 'service_slug' => 'required|max:255',
-            'service_description' => 'required',
-            'service_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'package_name.*' => 'required',
-            'package_price.*' => 'required|numeric',
-        ]);
-
         if ($request->hasFile('service_image')) {
-
             $manager = new ImageManager(new Driver());
+
             $new_name = $request->service_name . "." . $request->file('service_image')->getClientOriginalExtension();
             $img = $manager->read($request->file('service_image'));
-            $img->toJpeg(80)->save(base_path('public/storage/services/' . $new_name));
+
+            if (!file_exists(public_path(Service::IMAGE_PATH))) {
+                File::makeDirectory(public_path(Service::IMAGE_PATH), 0777, true);
+            }
+
+            $image_path = Service::IMAGE_PATH . $new_name;
+            $img->toJpeg(80)->save(public_path($image_path));
 
             $slug = Str::slug($request->service_name);
-
 
             $service = Service::create([
                 'service_name' => $request->service_name,
                 'service_slug' => $slug,
                 'service_description' => $request->service_description,
-                'service_image' => $new_name,
+                'service_image' => $image_path,
             ]);
-
-            foreach ($request->package_name as $key => $package_name) {
-                $service->ServicePackItems()->create([
-                    'service_id' => $service->id,
-                    'package_name' => $package_name,
-                    'package_price' => $request->package_price[$key]
-                ]);
+            
+            if ($request->has('package_name')) {
+                foreach ($request->package_name as $key => $package_name) {
+                    $service->ServicePackItems()->create([
+                        'service_id' => $service->id,
+                        'package_name' => $package_name,
+                        'package_price' => $request->package_price[$key]
+                    ]);
+                }
             }
+
         }
 
         return redirect()->route('service.index')->with('success', 'Service created successfully.');
@@ -88,7 +89,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('backend.service.edit',compact('service'));
+        return view('backend.service.edit', compact('service'));
     }
 
     /**
@@ -104,6 +105,11 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        if(file_exists($service->service_image)){
+            unlink(public_path($service->service_image));
+        }
+        $service->ServicePackItems()->delete();
+        $service->delete();
+        return back()->with('success', 'Service deleted successfully');
     }
 }
