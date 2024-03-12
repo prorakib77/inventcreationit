@@ -5,35 +5,15 @@
             <div class="row">
                 <div class="col-md-8 mx-auto text-center header_texts pt-10" style="margin-top: 20px ">
                     <h2>Order <span style="color: #00aeef;">Now</span></h2>
+                    <h3 class="pt-3"><span style="color: #00aeef;">{{ $service_item->package_name }}</span></h3>
+                    <h3 class="pt-3"><span style="color: #00aeef;">$ {{ $service_item->package_price }}</span></h3>
                 </div>
             </div>
             <div class="row text-center pt-5" style="margin-bottom: 40px ">
                 <div class="col-md-6 mx-auto ">
-                    <form action="{{ route('order.submit', $services->id) }}" method="post" enctype="multipart/form-data"
+                    <form action="{{ route('order.submit', $service_item->id) }}" method="post" enctype="multipart/form-data"
                         class="text-center">
                         @csrf
-
-                        <input type="number" name="service_id" value="{{ $services->id }}" hidden>
-                        <div class="form-group text-center">
-                            <input type="text" style="background: none; color: #fff; text-align:center;" class="form-control @error('service_name') is-invalid @enderror"
-                                name="service_name" id="service_name" placeholder="Enter name" readonly="readonly"
-                                value="{{ $services->package_name }}">
-                            @error('service_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group text-center">
-                            <input type="text" style="background: none; color: #fff; text-align:center;" class="form-control @error('service_price') is-invalid @enderror"
-                                name="service_price" id="service_price" placeholder="Enter name" readonly="readonly"
-                                value="{{ $services->package_price }} $">
-                            @error('service_price')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
                         <div class="form-group text-center">
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                 id="name" placeholder="Enter name">

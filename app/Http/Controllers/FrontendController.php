@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\PlanOrder;
 use App\Models\Service;
 use App\Models\ServicePackItem;
 use App\Models\SingleOrder;
@@ -43,7 +44,7 @@ class FrontendController extends Controller
             }
 
             $image_path = Trail::IMAGE_PATH . $new_name;
-            $img->toJpeg(80)->save(public_path($image_path));
+            $img->toJpeg()->save(public_path($image_path));
             Trail::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -56,23 +57,19 @@ class FrontendController extends Controller
     }
 
 
-    public function order(ServicePackItem $services)
+    public function order(ServicePackItem $service_item)
     {
-        return view('frontend.order', compact('services'));
+        return view('frontend.order', compact('service_item'));
     }
 
-    public function order_submit(Request $request, ServicePackItem $servicePackItem)
+    public function order_submit(Request $request, ServicePackItem $service_item)
     {
-        dd($servicePackItem->id);
         $request->validate([
-            'service_id' => 'required',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'file_link' => 'required',
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'service_name' => 'required',
-            'service_price' => 'required',
         ]);
 
         if ($request->hasFile('file')) {
@@ -81,25 +78,81 @@ class FrontendController extends Controller
             $new_name = $request->name . "." . $request->file('file')->getClientOriginalExtension();
             $img = $manager->read($request->file('file'));
 
-            if (!file_exists(public_path(Trail::IMAGE_PATH))) {
-                File::makeDirectory(public_path(Trail::IMAGE_PATH), 0777, true);
+            if (!file_exists(public_path(SingleOrder::IMAGE_PATH))) {
+                File::makeDirectory(public_path(SingleOrder::IMAGE_PATH), 0777, true);
             }
 
-            $image_path = Trail::IMAGE_PATH . $new_name;
+            $image_path = SingleOrder::IMAGE_PATH . $new_name;
 
             $img->toJpeg(80)->save(public_path($image_path));
             SingleOrder::create([
-                'service_id' => $request->service_id,
+                'service_id' => $service_item->id,
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'file' => $image_path,
                 'file_link' => $request->file_link,
-                'service_name' => $request->service_name,
-                'service_price' => $request->service_price,
+                'service_name' => $service_item->package_name,
+                'service_price' => $service_item->package_price,
             ]);
         }
+
+        return redirect()->route('home')->with('success', 'Thank you for your Order. We will contact you soon.');
     }
+
+
+
+
+
+// plan order 
+
+public function plan_get(Plan $plans){
+    return view('frontend.plan', compact('plans'));
+}
+
+public function plan_get_submit(Request $request, Plan $plans){
+
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'file_link' => 'required',
+        'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+    ]);
+
+    if ($request->hasFile('file')) {
+        $manager = new ImageManager(new Driver());
+
+        $new_name = $request->name . "." . $request->file('file')->getClientOriginalExtension();
+        $img = $manager->read($request->file('file'));
+
+        if (!file_exists(public_path(PlanOrder::IMAGE_PATH))) {
+            File::makeDirectory(public_path(PlanOrder::IMAGE_PATH), 0777, true);
+        }
+
+        $image_path = PlanOrder::IMAGE_PATH . $new_name;
+
+        $img->toJpeg(80)->save(public_path($image_path));
+        PlanOrder::create([
+            'plan_id' => $plans->id,
+            'plan_type' => $plans->plan_name,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'file' => $image_path,
+            'file_link' => $request->file_link,
+        ]);
+    }
+
+    return redirect()->route('home')->with('success', 'Thank you for your Order. We will contact you soon.');
+   
+
+}
+// plan order 
+
+
+
+
 
 // order view 
 
@@ -108,7 +161,7 @@ public function single_order(){
     return view('backend.order.single_order', compact('orders'));
 }
 public function plan_order(){
-    $orders = Plan::all();
+    $orders = PlanOrder::all();
     return view('backend.order.plan_order', compact('orders'));
 }
 public function trail_order(){

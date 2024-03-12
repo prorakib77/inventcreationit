@@ -57,7 +57,7 @@
 
                                                 <div class="text-sm text-gray-900">
                                                     @forelse ($service->ServicePackItems as $sp_item)
-                                                    {{ $sp_item->package_name }},&nbsp;
+                                                    {{ $sp_item->package_name }},&nbsp; <br>
                                                     @empty
                                                     <div class="text-sm text-gray-500">No plan items</div>
                                                     @endforelse

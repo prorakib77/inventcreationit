@@ -31,6 +31,10 @@
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            File Link
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                             Order Items
                                         </th>
                                         <th scope="col" class="relative px-6 py-3">
@@ -54,7 +58,11 @@
                                                 <div class="text-sm text-gray-900">{{ $order->email }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ $order->Phone }}
+                                                <div class="text-sm text-gray-900">{{ $order->phone }}
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">{{ $order->file_link }}
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">

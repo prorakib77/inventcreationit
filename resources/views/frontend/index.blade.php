@@ -28,9 +28,9 @@
         {{ $p_item->plan_item_name }}
     </li>
 
-</ul> 
+</ul>
 @endforeach
-    <button class="cta-btn">SELECT</button>
+    <a href="{{ route('plan_get', $plan->id) }}" class="cta-btn">SELECT</a>
 </div>
 @endforeach
 

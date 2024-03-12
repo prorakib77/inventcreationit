@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <a href="{{ route('single_order') }}" class="btn btn-outline btn-primary">Single Order</a>
-                    <a href="{{ route('plan_order') }}" class="btn btn-outline btn-secondary">Plan Order</a>
+                    <a href="{{ route('plan_order.all') }}" class="btn btn-outline btn-secondary">Plan Order</a>
                     <a href="{{ route('trail_order') }}" class="btn btn-outline btn-accent">Trail Order</a>
                 </div>
             </div>
