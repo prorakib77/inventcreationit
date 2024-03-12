@@ -58,13 +58,12 @@ class FrontendController extends Controller
 
     public function order(ServicePackItem $services)
     {
-        
         return view('frontend.order', compact('services'));
     }
 
-    public function order_submit(Request $request, Service $service)
+    public function order_submit(Request $request, ServicePackItem $servicePackItem)
     {
-        dd($service->id);
+        dd($servicePackItem->id);
         $request->validate([
             'service_id' => 'required',
             'name' => 'required',
