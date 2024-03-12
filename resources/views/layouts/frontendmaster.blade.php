@@ -1,390 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Plane-InventcreationIT</title>
+    <title>InventcreationIt - The Best Creator for Your Invention!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome -->
 
-    <style>
-        * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  font-family: "Open Sans", sans-serif;
-}
+        <!-- fav icon  -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets') }}/images/Invent_Creation_Logo_(Site_Icon).svg">
+        <!-- fav icon  -->
 
-body {
-
-  min-height: 100vh;
-  background-color: #171717;
-}
-
-.pricing-plans {
-  gap: 32px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  padding: 64px;
-}
-
-.pricing-card {
-  --col: #e4e4e7;
-  position: relative;
-  min-width: 360px;
-  padding: 32px;
-  padding-bottom: 96px;
-  border-radius: 4px;
-  border: 1px solid #262626;
-  background-color: #26262620;
-  box-shadow: 0 0 32px transparent;
-  text-align: center;
-}
-
-.pricing-card.basic {
-  --col: #0891b2;
-}
-
-.pricing-card.standard {
-  --col: #059669;
-}
-
-.pricing-card.premium {
-  --col: #c026d3;
-}
-
-.pricing-card:hover {
-  border-color: var(--col);
-  background-color: #26262680;
-  box-shadow: 0 0 32px #171717;
-  transform: translateY(-16px) scale(1.02);
-  transition: all 0.5s ease;
-}
-
-.pricing-card > *:not(:last-child) {
-  margin-bottom: 32px;
-}
-
-.pricing-card .heading h4 {
-  padding-bottom: 12px;
-  color: var(--col);
-  font-size: 24px;
-  font-weight: normal;
-}
-
-.pricing-card .heading p {
-  color: #a3a3a3;
-  font-size: 14px;
-  font-weight: lighter;
-}
-
-.pricing-card .price {
-  position: relative;
-  color: var(--col);
-  font-size: 60px;
-  font-weight: bold;
-}
-
-.pricing-card .price sub {
-  position: absolute;
-  bottom: 14px;
-  color: #a3a3a3;
-  font-size: 14px;
-  font-weight: lighter;
-}
-
-.pricing-card .features li {
-  padding-bottom: 16px;
-  color: #a3a3a3;
-  font-size: 16px;
-  font-weight: lighter;
-  text-align: left;
-}
-
-.pricing-card .features li i,
-.pricing-card .features li strong {
-  color: #e4e4e7;
-  font-size: 16px;
-  text-align: left;
-}
-
-.pricing-card .features li strong {
-  padding-left: 24px;
-}
-
-.pricing-card .cta-btn {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  padding: 12px;
-  border-radius: 4px;
-  border: 1px solid var(--col);
-  background-color: var(--col);
-  color: #e4e4e7;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.pricing-card .cta-btn:active {
-  background-color: transparent;
-  color: var(--col);
-  transition: all 0.3s ease;
-}
-
-
-
-
-
-
-
-
-
-
-    </style>
+        <!-- googleapis fonts poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
+    <!-- googleapis fonts poppins -->
 </head>
+
 <body>
-    
+
 
 
 
     <nav class="navbar navbar-expand-lg" style="color: #171717">
         <div class="container container-fluid">
-          <a class="navbar-brand" href="https://inventcreationit.com">
-            <img src="https://inventcreationit.com/wp-content/uploads/2022/12/Invent-Creation-Logos-2.png" alt="" style="height: 100px">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="m-auto mb-2 navbar-nav mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-              </li>
-              
-              
+            <a class="navbar-brand" href="https://inventcreationit.com">
+                <img src="{{ asset('assets') }}/images/Invent_Creation_IT_Logo.svg" alt="Logo" width="150px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="m-auto mb-2 navbar-nav mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://inventcreationit.com/"
+                            target="_blank">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing-plans">Pricing Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#single-plans">Single Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://inventcreationit.com/contact-us/">Contact Us</a>
+                    </li>
 
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+
+
+                </ul>
+                <a href="#trailNowForm" class="trail_btn" type="submit" >Trail Now</a>
+            </div>
         </div>
-      </nav>
+    </nav>
 
 
-    <section class="pricing-plans">
-        <div class="pricing-card basic">
-          <div class="heading">
-            <h4>BASIC</h4>
-            <p>for small websites or blogs</p>
-          </div>
-          <p class="price">
-            $2
-            <sub>/month</sub>
-          </p>
-          <ul class="features">
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>1 domain</strong> name
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>10 GB</strong> of disk space
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>100GB </strong>of bandwidth
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>1 MySQL</strong> database
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>5 email</strong> accounts
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>cPanel</strong> control panel
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Free SSL</strong> certificate
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>24/7</strong> support
-            </li>
-          </ul>
-          <button class="cta-btn">SELECT</button>
+
+
+
+
+@yield('content')
+
+
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, Dhaka</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>9876543210 0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>contact@inventcreationit.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="{{ asset('assets') }}/images/Invent_Creation_IT_Logo.svg" class="img-fluid"
+                                        alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor
+                                    incididuntut consec tetur adipisicing
+                                    elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#pricing-plans">Pricing Plans</a></li>
+                                <li><a href="#">portfolio</a></li>
+                                <li><a href="https://inventcreationit.com/contact-us/">Contact</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Expert Team</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="pricing-card standard">
-          <div class="heading">
-            <h4>STANDARD</h4>
-            <p>for medium-sized businesses</p>
-          </div>
-          <p class="price">
-            $5
-            <sub>/month</sub>
-          </p>
-          <ul class="features">
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited</strong> domain name
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>50 GB</strong> of disk space
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>500GB </strong>of bandwidth
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>10 MySQL</strong> database
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>50 email</strong> accounts
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>cPanel</strong> control panel
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Free SSL</strong> certificate
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>24/7</strong> support
-            </li>
-          </ul>
-          <button class="cta-btn">SELECT</button>
-        </div>
-        <div class="pricing-card premium">
-          <div class="heading">
-            <h4>PREMIUM</h4>
-            <p>for small businesses</p>
-          </div>
-          <p class="price">
-            $10
-            <sub>/month</sub>
-          </p>
-          <ul class="features">
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited</strong> domain name
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>100 GB</strong> of disk space
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>1TB </strong>of bandwidth
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited MySQL</strong> database
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited email</strong> accounts
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>cPanel</strong> control panel
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Free SSL</strong> certificate
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>24/7 priority</strong> support
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Advanced</strong> security features
-            </li>
-          </ul>
-          <button class="cta-btn">SELECT</button>
-        </div>
-        <div class="pricing-card premium">
-          <div class="heading">
-            <h4>Gold</h4>
-            <p>for small businesses</p>
-          </div>
-          <p class="price">
-            $10
-            <sub>/month</sub>
-          </p>
-          <ul class="features">
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited</strong> domain name
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>100 GB</strong> of disk space
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>1TB </strong>of bandwidth
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited MySQL</strong> database
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Unlimited email</strong> accounts
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>cPanel</strong> control panel
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Free SSL</strong> certificate
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>24/7 priority</strong> support
-            </li>
-            <li>
-              <i class="fa-solid fa-check"></i>
-              <strong>Advanced</strong> security features
-            </li>
-          </ul>
-          <button class="cta-btn">SELECT</button>
-        </div>
-      </section>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 text-center text-lg-center m-auto">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2018, All Right Reserved <a
+                                    href="https://inventcreationit.com">InventcreationIT</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    </div>
+                </div>
+            </div>
+    </footer>
 
 
 
 
+    <!-- fontawesome js  -->
+    <script src="https://kit.fontawesome.com/662288130b.js" crossorigin="anonymous"></script>
 
 
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

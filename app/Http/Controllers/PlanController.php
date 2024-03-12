@@ -35,6 +35,7 @@ class PlanController extends Controller
     {
         $request->validate([
             'plan_name' => 'required',
+            'plan_description' => 'required|max:30',
             'plan_price' => 'required',
             'plan_items' => 'required',
         ]);

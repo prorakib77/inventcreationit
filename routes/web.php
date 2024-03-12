@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::post('/freetrail', [FrontendController::class, 'freetrail'])->name('freetrail.submit');
+Route::get('/order/{plan_id}', [FrontendController::class, 'order'])->name('order');
+Route::post('/order/{id}', [FrontendController::class, 'order_submit'])->name('order.submit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -35,6 +37,13 @@ Route::middleware('auth')->group(function () {
     // service operation
     Route::resource('service', ServiceController::class);
     // service operation
+
+    // order view 
+    Route::get('/singel/order', [FrontendController::class, 'single_order'])->name('single_order');
+    Route::get('/plan/order', [FrontendController::class, 'plan_order'])->name('plan_order');
+    Route::get('/trail/order', [FrontendController::class, 'trail_order'])->name('trail_order');
+
+    // order view 
 });
 
 require __DIR__.'/auth.php';
