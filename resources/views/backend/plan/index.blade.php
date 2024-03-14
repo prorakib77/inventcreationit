@@ -4,7 +4,7 @@
                 {{ __('Plans') }}
             </h2>
 
-            <a href="{{ route('plan.create') }}" class="btn btn-primary">Create Plan</a>
+            <a href="{{ route('plans.create') }}" class="btn btn-primary">Create Plan</a>
 
         </x-slot>
 
@@ -70,9 +70,9 @@
                                                 </td>
                                                 <td
                                                     class="px-6 py-4 text-sm font-medium text-right flex space-x-2 justify-end">
-                                                    <a href="{{ route('plan.edit', $plan->id) }}"
+                                                    <a href="{{ route('plans.edit', $plan->id) }}"
                                                         class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                    <form action="{{ route('plan.destroy', $plan->id) }}"
+                                                    <form action="{{ route('plans.destroy', $plan->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <form action="{{ route('plan.update', $plan) }}" method="POST">
+            <form action="{{ route('plans.update', $plan) }}" method="POST">
                 @csrf
                 @method('PATCH')
 

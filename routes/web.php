@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/trail/order', [FrontendController::class, 'trail_order'])->name('trail_order');
     // order view 
     // plan operation
-    Route::resource('plan', PlanController::class);
+    Route::resource('plans', PlanController::class);
     // plan operation
     // service operation
     Route::resource('service', ServiceController::class);

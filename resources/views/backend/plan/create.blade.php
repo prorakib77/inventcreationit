@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <form action="{{ route('plan.store') }}" method="POST">
+            <form action="{{ route('plans.store') }}" method="POST">
                 @csrf
 
                 <div class="flex flex-col space-y-2">

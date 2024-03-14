@@ -49,7 +49,7 @@ class PlanController extends Controller
             ]);
         }
 
-        return redirect()->route('plan.index');
+        return redirect()->route('plans.index');
     }
 
     /**
@@ -98,7 +98,7 @@ class PlanController extends Controller
 
             DB::commit();
 
-            return redirect()->route('plan.index')->with('success', 'Plan updated successfully');
+            return redirect()->route('plans.index')->with('success', 'Plan updated successfully');
         } catch (\Exception $e) {
 
             /**
@@ -125,6 +125,6 @@ class PlanController extends Controller
     {
         $plan->planItems()->delete();
         $plan->delete();
-        return redirect()->route('plan.index');
+        return redirect()->route('plans.index');
     }
 }
